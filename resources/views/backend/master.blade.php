@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="adminHMD professional admin dashboard template">
     <title>Dashboard | adminHMD</title>
-    @yield('styles')
+    @stack('styles')
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>
