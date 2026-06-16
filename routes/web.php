@@ -14,3 +14,7 @@ Route::get('/dashboard', function () {
 Route::get('/students', function () {
     return view('backend.students.index');
 });
+
+Route::get('/student/create', function () {
+    return view('backend.students.create');
+});
