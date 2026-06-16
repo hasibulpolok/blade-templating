@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->enum('gender', ['male', 'female']);
                 $table->string('phone', 20)->nullable();
                 $table->string('email', 50);
-                $table->tinyInteger('district');
+                $table->string('district');
                 $table->string('subject')->nullable();
                 $table->timestamps();
       
