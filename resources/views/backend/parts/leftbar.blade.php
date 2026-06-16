@@ -10,11 +10,11 @@
       </div>
 
       <nav class="sidebar-nav">
-        <a class="nav-link active" href="dashboard" aria-current="page">
+        <a class="nav-link active" href="/dashboard" aria-current="page">
           <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
           <span class="nav-text">Dashboard</span>
         </a>
-        <a class="nav-link" href="students">
+        <a class="nav-link" href="/students">
           <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
           <span class="nav-text">Students</span>
         </a>

@@ -11,3 +11,6 @@ Route::get('/home', function () {
 Route::get('/dashboard', function () {
     return view('backend/dashboard');
 });
+Route::get('/students', function () {
+    return view('backend.students.index');
+});
