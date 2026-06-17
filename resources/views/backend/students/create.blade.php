@@ -30,7 +30,21 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
 
-                    <form action="{{route('student.store')}}" method="POST" class="card shadow-sm border-0">
+                    <div class="col-12 col-xl-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <h5>Whoops! There were some problems with your input.</h5>
+
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+
+                    <form action="{{ route('student.store') }}" method="POST" class="card shadow-sm border-0">
                         @csrf
 
                         <div class="card-header bg-white py-3">
@@ -53,7 +67,7 @@
                                         required>
                                 </div>
 
-                           
+
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold d-block mb-2">
                                         Gender
