@@ -53,7 +53,7 @@
                                         required>
                                 </div>
 
-                                <!-- Gender -->
+                           
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold d-block mb-2">
                                         Gender
@@ -115,7 +115,9 @@
                                         <option value="Dhaka">Dhaka</option>
                                         <option value="Nilphamari">Nilphamari</option>
                                         <option value="Rangpur">Rangpur</option>
-                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Rajshahi">Madaripur</option>
+                                        <option value="Rajshahi">Gaibandha</option>
+                                        <option value="Rajshahi">Barishal</option>
                                     </select>
                                 </div>
 
