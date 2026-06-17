@@ -20,18 +20,98 @@
           </div>
 
           <section class="panel">
-         <div class="d-flex justify-content-end">
-               <button class="btn-primary text-white"><a class="text-white" href="{{url('student/create')}}">New Student</a></button>
-         </div>
-            <div class="panel-header"><div><h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Advanced Table</span></h2><p class="text-muted mb-0">Searchable responsive table for orders and customer data.</p></div><input class="form-control form-control-sm table-search" type="search" placeholder="Search orders" data-table-search="ordersTable" aria-label="Search orders"></div>
-            <div class="table-responsive"><table class="table align-middle mb-0" id="ordersTable" data-searchable-table><thead><tr><th>Order Id</th><th>Image</th><th>Student Name</th><th>Gender</th><th>Subject</th><th></th><th>Creation Date</th><th class="text-end">Action</th></tr></thead><tbody>
-            @foreach($students as $student)
-                <tr><td class="fw-semibold">{{$student->id}}</td><td><div class="table-media"><img class="product-thumb" src="../assets/images/ecommerce/product-1.jpg" alt="Wireless Headset"><span>Wireless Headset</span></div></td><td>{{$student->name}}</td><td><span class="badge text-bg-success">Gender</span></td><td>{{$student->gender}}</td><td>{{$student->subject}}</td><td>May 6, 2026</td><td class="text-end"><button class="btn btn-light btn-sm" type="button">View</button></td></tr>
-              @endforeach
-              
-              
-            </tbody></table></div>
-          </section>
+
+    <!-- Top Bar -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+
+        <div>
+            <h2 class="h5 mb-1 section-title">
+                <i class="bi bi-table"></i>
+                <span>Advanced Table</span>
+            </h2>
+            <p class="text-muted mb-0">
+                Searchable responsive table for orders and customer data.
+            </p>
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row gap-2">
+            <input
+                class="form-control form-control-sm"
+                type="search"
+                placeholder="Search orders"
+                data-table-search="ordersTable"
+                aria-label="Search orders">
+
+            <a href="{{ url('student/create') }}" class="btn btn-primary">
+                New Student
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle mb-0" id="ordersTable">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Student Name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Subject</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach($students as $student)
+                <tr>
+                    <td class="fw-semibold">{{ $student->id }}</td>
+
+                    <td>
+                        <img
+                            src="../assets/images/ecommerce/product-1.jpg"
+                            alt="Student"
+                            class="img-fluid rounded"
+                            style="width:50px;height:50px;object-fit:cover;">
+                    </td>
+
+                    <td>{{ $student->name }}</td>
+
+                    <td>
+                        <span class="badge bg-success">
+                            {{ $student->gender }}
+                        </span>
+                    </td>
+
+                    <td>{{ $student->phone }}</td>
+
+                    <td>{{ $student->subject }}</td>
+
+                    <td>
+                        <div class="d-flex flex-wrap gap-1">
+                            <button class="btn btn-sm btn-info text-white">
+                                View
+                            </button>
+
+                            <button class="btn btn-sm btn-warning">
+                                Edit
+                            </button>
+
+                            <button class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+
+        </table>
+    </div>
+
+</section>
         </div>
       </main>
 @endsection
