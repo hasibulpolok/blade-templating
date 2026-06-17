@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="col-12 col-sm-auto">
-                                <a href="{{ url('student/create') }}" class="btn btn-primary w-100">
+                                <a href="{{ route('student.create') }}" class="btn btn-primary w-100">
                                     <i class="bi bi-plus-circle me-1"></i>
                                     New Student
                                 </a>
