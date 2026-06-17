@@ -30,7 +30,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
 
-                    <form action="" method="POST" class="card shadow-sm border-0">
+                    <form action="{{route('student.store')}}" method="POST" class="card shadow-sm border-0">
                         @csrf
 
                         <div class="card-header bg-white py-3">

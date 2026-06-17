@@ -29,8 +29,20 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-       
-    }
+
+        // dd($request);
+        //    echo "hello you are here";
+
+        $student = new student;
+        $student->name = $request->name;
+        $student->gender = $request->gender;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->district = $request->district;
+        $student->subject = json_encode($request->subject);
+        $student->save();
+        return redirect('/students');
+        }
 
     /**
      * Display the specified resource.
