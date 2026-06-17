@@ -21,7 +21,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.students.index', compact('students'));
     }
 
     /**
@@ -29,7 +29,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
