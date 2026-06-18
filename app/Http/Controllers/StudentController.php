@@ -56,10 +56,12 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+ public function show(string $id)
+{
+    $student = Student::find($id);
+
+    return view('backend.students.edit', compact('student'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -72,16 +74,43 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|min:4|max:50',
+        'gender' => 'required',
+        'email' => 'required|email|unique:students,email,' . $id,
+        'phone' => 'min:11'
+    ]);
 
+    $student = Student::find($id);
+
+    $student->name = $request->name;
+    $student->gender = $request->gender;
+    $student->email = $request->email;
+    $student->phone = $request->phone;
+    $student->district = $request->district;
+   
+
+    $subjects = $request->subject ?? [];
+    $student->subject = implode(',', $subjects);
+
+    $student->save();
+
+    return redirect('/students')
+        ->with('success', 'Successfully student updated');
+}
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+   public function destroy(string $id)
+{
+    $student = Student::find($id);
+
+    $student->delete();
+
+    return redirect()->route('student.index')
+                     ->with('success', 'Deleted Successfully');
 }
+}
+

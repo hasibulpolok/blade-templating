@@ -11,15 +11,15 @@
 
             <section class="card border-0 shadow-sm">
                 <div class="card-body">
-                     @session('success')
-                                <div class="alert alert-success">
-                                    {{ $value }}
-                                </div>
-                            @endsession
+                    @session('success')
+                        <div class="alert alert-success">
+                            {{ $value }}
+                        </div>
+                    @endsession
 
                     <div class="row g-3 align-items-center mb-4">
                         <div class="col-12 col-lg-6">
-                           
+
 
                         </div>
 
@@ -85,15 +85,22 @@
                                                     <span class="d-none d-md-inline">View</span>
                                                 </button>
 
-                                                <button class="btn btn-warning btn-sm">
+                                                <a href="{{ route('student.edit', $student->id) }}"
+                                                    class="btn btn-warning btn-sm">
                                                     <i class="bi bi-pencil"></i>
                                                     <span class="d-none d-md-inline">Edit</span>
-                                                </button>
+                                                </a>
 
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="bi bi-trash"></i>
-                                                    <span class="d-none d-md-inline">Delete</span>
-                                                </button>
+                                                <form action="{{ route('student.destroy', $student->id) }}" method="post">
+                                                    @csrf
+
+                                                    <button
+                                                        onclick="return confirm('Are you sure you want to delete this student ?')"
+                                                        type="submit" class="btn btn-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                        <span class="d-none d-md-inline">Delete</span>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
