@@ -64,7 +64,7 @@
                                         Full Name
                                     </label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter full name"
-                                        required>
+                                        required value="{{ old('name') }}">
                                 </div>
 
 
@@ -76,7 +76,7 @@
                                     <div class="d-flex gap-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" id="male"
-                                                value="male" checked>
+                                                value="male" {{ old('gender') == 'male' ? 'checked' : '' }}>
                                             <label class="form-check-label" for="male">
                                                 Male
                                             </label>
@@ -84,7 +84,7 @@
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" id="female"
-                                                value="female">
+                                                value="female" {{ old('gender') == 'female' ? 'checked' : '' }}>
                                             <label class="form-check-label" for="female">
                                                 Female
                                             </label>
@@ -92,7 +92,7 @@
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" id="others"
-                                                value="others">
+                                                value="others" {{ old('gender') == 'others' ? 'checked' : '' }}>
                                             <label class="form-check-label" for="others">
                                                 Others
                                             </label>
@@ -106,7 +106,7 @@
                                         Phone Number
                                     </label>
                                     <input type="tel" name="phone" class="form-control" placeholder="01XXXXXXXXX"
-                                        required>
+                                        required value="{{ old('phone') }}">
                                 </div>
 
                                 <!-- Email -->
@@ -115,7 +115,7 @@
                                         Email Address
                                     </label>
                                     <input type="email" name="email" class="form-control"
-                                        placeholder="example@email.com">
+                                        placeholder="example@email.com" value="{{ old('email') }}">
                                 </div>
 
 
@@ -125,13 +125,20 @@
                                     </label>
 
                                     <select name="district" class="form-select">
-                                        <option value="">Select District</option>
-                                        <option value="Dhaka">Dhaka</option>
-                                        <option value="Nilphamari">Nilphamari</option>
-                                        <option value="Rangpur">Rangpur</option>
-                                        <option value="Rajshahi">Madaripur</option>
-                                        <option value="Rajshahi">Gaibandha</option>
-                                        <option value="Rajshahi">Barishal</option>
+                                        <option value="" {{ old('district') == '' ? 'selected' : '' }}>Select District
+                                        </option>
+                                        <option value="Dhaka" {{ old('district') == 'Dhaka' ? 'selected' : '' }}>Dhaka
+                                        </option>
+                                        <option value="Nilphamari" {{ old('district') == 'Nilphamari' ? 'selected' : '' }}>
+                                            Nilphamari</option>
+                                        <option value="Rangpur" {{ old('district') == 'Rangpur' ? 'selected' : '' }}>
+                                            Rangpur</option>
+                                        <option value="Rajshahi" {{ old('district') == 'Rajshahi' ? 'selected' : '' }}>
+                                            Rajshahi</option>
+                                        <option value="Gaibandha" {{ old('district') == 'Gaibandha' ? 'selected' : '' }}>
+                                            Gaibandha</option>
+                                        <option value="Barishal" {{ old('district') == 'Barishal' ? 'selected' : '' }}>
+                                            Barishal</option>
                                     </select>
                                 </div>
 
@@ -156,7 +163,8 @@
                                         <div class="col-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="subject[]"
-                                                    id="graphicsDesign" value="Graphics Design">
+                                                    id="graphicsDesign" value="Graphics Design"
+                                                    {{ old('value' == 'Graphics Design' ? 'checked' : '') }}>
                                                 <label class="form-check-label" for="graphicsDesign">
                                                     Graphics Design
                                                 </label>
