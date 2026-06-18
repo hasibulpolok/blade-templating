@@ -80,10 +80,10 @@
 
                                         <td>
                                             <div class="d-flex flex-column flex-md-row justify-content-center gap-1">
-                                                <button class="btn btn-info btn-sm text-white">
-                                                    <i class="bi bi-eye"></i>
-                                                    <span class="d-none d-md-inline">View</span>
-                                                </button>
+                                                <a href="{{ route('student.show', $student->id) }}"
+                                                    class="btn btn-info btn-sm">
+                                                    Show
+                                                </a>
 
                                                 <a href="{{ route('student.edit', $student->id) }}"
                                                     class="btn btn-warning btn-sm">

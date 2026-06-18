@@ -63,6 +63,13 @@ class StudentController extends Controller
     return view('backend.students.edit', compact('student'));
 }
 
+public function newshow($id)
+{
+    $student = Student::findOrFail($id);
+
+    return view('backend.students.show', compact('student'));
+}
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -20,5 +20,6 @@ Route::post('students', [StudentController::class, 'store'])->name('student.stor
 Route::get('students/{id}/edit', [StudentController::class, 'show'])->name('student.edit');
 Route::post('students/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 Route::put('/students/{id}', [StudentController::class, 'update'])->name('student.update');
+Route::get('/students/{id}/show', [StudentController::class, 'newshow'])->name('student.show');
 
 
