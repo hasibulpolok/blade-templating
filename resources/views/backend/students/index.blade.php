@@ -7,15 +7,20 @@
     <main class="dashboard-content">
         <div class="container-fluid px-2 px-md-3 px-lg-4 py-3 py-md-4">
 
-            
+
 
             <section class="card border-0 shadow-sm">
                 <div class="card-body">
+                     @session('success')
+                                <div class="alert alert-success">
+                                    {{ $value }}
+                                </div>
+                            @endsession
 
                     <div class="row g-3 align-items-center mb-4">
                         <div class="col-12 col-lg-6">
                            
-                            
+
                         </div>
 
                         <div class="col-12 col-lg-6">

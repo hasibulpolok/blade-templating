@@ -42,11 +42,14 @@ class StudentController extends Controller
     $student->email = $request->email;
     $student->phone = $request->phone;
     $student->district = $request->district;
-    $student->subject = json_encode($request->subject);
+    // $student->subject = json_encode($request->subject);
+    $subjects = $request->subject;
+    $subjects = implode(",", $subjects);
 
+    $student->subject = $subjects;
     $student->save();
 
-    return redirect('/students');
+    return redirect('/students')->with('success','successfully student created');
 }
 
     /**
