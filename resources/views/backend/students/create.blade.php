@@ -44,7 +44,8 @@
                         @endif
                     </div>
 
-                    <form action="{{ route('student.store') }}" method="POST" class="card shadow-sm border-0">
+                    <form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data"
+                        class="card shadow-sm border-0">
                         @csrf
 
                         <div class="card-header bg-white py-3">
@@ -200,6 +201,12 @@
                                         Note
                                     </label>
                                     <textarea name="note" class="form-control" rows="4" placeholder="Your Message"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label" for="photo">Choose Student Photo</label>
+                                    <input class="form-control" id="photo" name="photo" type="file"
+                                        value="{{ old('photo') }}" required>
+                                    <div class="invalid-feedback">Photo is required.</div>
                                 </div>
 
                             </div>

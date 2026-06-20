@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->string('email', 50);
                 $table->string('district');
                 $table->string('subject')->nullable();
+                $table->string('photo', 100);
                 $table->timestamps();
       
         });

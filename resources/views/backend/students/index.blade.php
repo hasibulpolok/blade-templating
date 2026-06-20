@@ -62,7 +62,7 @@
                                         </td>
 
                                         <td>
-                                            <img src="../assets/images/ecommerce/product-1.jpg" alt="Student"
+                                            <img src="{{ asset('images/' . $student->photo) }}"
                                                 class="img-fluid rounded-circle" width="50" height="50">
                                         </td>
 

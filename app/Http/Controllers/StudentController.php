@@ -28,47 +28,56 @@ class StudentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required|min:4|max:50',
-        'gender' => 'required',
-        'email' => 'required|email|unique:students,email',
-        'phone' => "min:11"
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|min:4|max:50',
+            'gender' => 'required',
+            'email' => 'required|email|unique:students,email',
+            'phone' => "min:11",
+            'photo' => 'required|image|mimes:jpg,png,jpeg,svg,webp|max:2048'
+        ]);
 
-    $student = new Student();
 
-    $student->name = $request->name;
-    $student->gender = $request->gender;
-    $student->email = $request->email;
-    $student->phone = $request->phone;
-    $student->district = $request->district;
-    // $student->subject = json_encode($request->subject);
-    $subjects = $request->subject;
-    $subjects = implode(",", $subjects);
+        $random_name = rand(1, 20);
+        $extension_lower = strtolower($request->photo->extension());
+        $fileName = $random_name . time() . "." . $extension_lower;
 
-    $student->subject = $subjects;
-    $student->save();
+        $request->photo->move(public_path('images'), $fileName);
 
-    return redirect('/students')->with('success','successfully student created');
-}
+        $student = new Student();
+
+        $student->name = $request->name;
+        $student->gender = $request->gender;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->district = $request->district;
+        // $student->subject = json_encode($request->subject);
+        $subjects = $request->subject;
+        $subjects = implode(",", $subjects);
+
+        $student->subject = $subjects;
+        $student->photo = 'images/' . $fileName;
+        $student->save();
+
+        return redirect('/students')->with('success', 'successfully student created');
+    }
 
     /**
      * Display the specified resource.
      */
- public function show(string $id)
-{
-    $student = Student::find($id);
+    public function show(string $id)
+    {
+        $student = Student::find($id);
 
-    return view('backend.students.edit', compact('student'));
-}
+        return view('backend.students.edit', compact('student'));
+    }
 
-public function newshow($id)
-{
-    $student = Student::findOrFail($id);
+    public function newshow($id)
+    {
+        $student = Student::findOrFail($id);
 
-    return view('backend.students.show', compact('student'));
-}
+        return view('backend.students.show', compact('student'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,42 +91,41 @@ public function newshow($id)
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required|min:4|max:50',
-        'gender' => 'required',
-        'email' => 'required|email|unique:students,email,' . $id,
-        'phone' => 'min:11'
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|min:4|max:50',
+            'gender' => 'required',
+            'email' => 'required|email|unique:students,email,' . $id,
+            'phone' => 'min:11'
+        ]);
 
-    $student = Student::find($id);
+        $student = Student::find($id);
 
-    $student->name = $request->name;
-    $student->gender = $request->gender;
-    $student->email = $request->email;
-    $student->phone = $request->phone;
-    $student->district = $request->district;
-   
+        $student->name = $request->name;
+        $student->gender = $request->gender;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->district = $request->district;
 
-    $subjects = $request->subject ?? [];
-    $student->subject = implode(',', $subjects);
 
-    $student->save();
+        $subjects = $request->subject ?? [];
+        $student->subject = implode(',', $subjects);
 
-    return redirect('/students')
-        ->with('success', 'Successfully student updated');
-}
+        $student->save();
+
+        return redirect('/students')
+            ->with('success', 'Successfully student updated');
+    }
     /**
      * Remove the specified resource from storage.
      */
-   public function destroy(string $id)
-{
-    $student = Student::find($id);
+    public function destroy(string $id)
+    {
+        $student = Student::find($id);
 
-    $student->delete();
+        $student->delete();
 
-    return redirect()->route('student.index')
-                     ->with('success', 'Deleted Successfully');
+        return redirect()->route('student.index')
+            ->with('success', 'Deleted Successfully');
+    }
 }
-}
-
