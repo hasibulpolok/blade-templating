@@ -62,8 +62,7 @@
                                         </td>
 
                                         <td>
-                                            <img src="{{ asset('images/' . $student->photo) }}"
-                                                class="img-fluid rounded-circle" width="50" height="50">
+                                            <img class="product-thumb" src="{{ $student->photo }}"
                                         </td>
 
                                         <td>{{ $student->name }}</td>
